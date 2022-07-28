@@ -217,13 +217,13 @@ function setCurrentStatus(buttonTurn) {
             if (turn == true) {
                 buttonTurn.addClass('switch-on');
                 let style = document.querySelector('.switch-btn').style;
-                style.setProperty('--background', 'url("CHECK.svg")');
+                style.setProperty('--background', 'url("img/CHECK.svg")');
                 $('.punktThemeText').addClass('on');
                 
             } else {
                 buttonTurn.removeClass('switch-on');
                 let style = document.querySelector('.switch-btn').style;
-                style.setProperty('--background', 'url("CHECKNON.svg")');
+                style.setProperty('--background', 'url("img/CHECKNON.svg")');
                 $('.punktThemeText').removeClass('on');
             }
         });

@@ -24,10 +24,10 @@ function tumbler() {
         if (turn == null || turn == undefined) chrome.storage.sync.set({ isTurn: true });
         
         if (turn == false) {
-            chrome.action.setIcon({ path: "../lightLogo.png" });
+            chrome.action.setIcon({ path: "../img/lightLogo.png" });
         } 
         else {
-            chrome.action.setIcon({ path: "../darkLogo.png" });
+            chrome.action.setIcon({ path: "../img/darkLogo.png" });
         }
         console.log(turn);
     });

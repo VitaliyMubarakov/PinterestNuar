@@ -1,17 +1,17 @@
 {
     "name": "Pinterest Nuar | Dark Theme",
     "description": "Pinterest | Material design",
-    "version": "0.1.2",
+    "version": "0.1.1",
     "manifest_version": 3,
     "icons": {
-        "16": "darkLogo.png",
-        "128": "darkLogo.png"
+        "16": "img/darkLogo.png",
+        "128": "img/darkLogo.png"
     },
     "background": {
         "service_worker": "background.js"
     },
     "action": {
-        "default_icon": "darkLogo.png",
+        "default_icon": "img/darkLogo.png",
         "default_title": "Tap to open settings menu",
         "default_popup": "popup.html"
     },

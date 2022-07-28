@@ -17,7 +17,7 @@
     height: 32px; /* высота кнопки */
     width: 34px; /* ширина кнопки */
     border-radius: 17px;
-    background: url("CHECK.svg");
+    background: url("img/CHECK.svg");
     background-repeat:no-repeat;
     background-position: center center;
     top: -5px; /* положение кнопки по вертикали относительно основы */
