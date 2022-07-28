@@ -1,5 +1,5 @@
 # Pinterest Nuar
-![Main](https://media.giphy.com/media/wKoPDy4mp8Lr6IJ9ce/giphy.gif)
+![Main](./img/VERY_BIG.png)
 ### Customizable dark theme for pinterest.com
 
 ## Features
@@ -9,5 +9,7 @@
 
 - The User can change: 
     1. Rounding of images
-    1. Corners indentation
+    2. Corners indentation
 
+## Screenshots
+![image](https://user-images.githubusercontent.com/58411554/181499145-d95b2059-97d4-48fe-aec9-ea9a69503f5e.png)
