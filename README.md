@@ -1,5 +1,5 @@
 # Pinterest Nuar
-![Main](./img/VERY_BIG.png | width=100)
+![Main](./img/VERY_BIG.png)
 ### Customizable dark theme for pinterest.com
 
 ## Features
