@@ -1,0 +1,112 @@
+.switch-btn {
+    display: inline-block;
+    width: 64px; /* ширина */
+    height: 20px; /* высота */
+    border-radius: 19px; /* радиус скругления */
+    background: linear-gradient(90deg, #919191 0%, #9c9c9c 50%);
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 200ms; /* анимация */
+}
+.switch-btn::after {
+    content: "";
+    height: 32px; /* высота кнопки */
+    width: 34px; /* ширина кнопки */
+    border-radius: 17px;
+    background: url("CHECK.svg");
+    background-repeat:no-repeat;
+    background-position: center center;
+    top: -5px; /* положение кнопки по вертикали относительно основы */
+    left: -4px; /* положение кнопки по горизонтали относительно основы */
+    transition-duration: 200ms; /* анимация */
+    position: absolute;
+    z-index: 1;
+}
+
+.switch-btn::after {
+    content: "";
+    height: 32px; /* высота кнопки */
+    width: 34px; /* ширина кнопки */
+    border-radius: 17px;
+    background: var(--background);
+    background-repeat:no-repeat;
+    background-position: center center;
+    top: -5px; /* положение кнопки по вертикали относительно основы */
+    left: -4px; /* положение кнопки по горизонтали относительно основы */
+    transition-duration: 200ms; /* анимация */
+    position: absolute;
+    z-index: 1;
+}
+
+.switch-on {
+    background: linear-gradient(90deg, #48C6EF 30%, #5993ff 70%);
+}
+.switch-on::after {
+    left: 32px;
+}
+
+
+/* Слайдер */
+
+:root{
+--pseudo-background-size: 0% 50%;
+--pseudo-background-sizeTop: 0% 50%;
+}
+
+.roundRange {
+  width: 210px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+.roundRange,
+.roundRange::-webkit-slider-runnable-track,
+.roundRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+.roundRange::-webkit-slider-runnable-track {
+  width: 200px;
+  height: 4px;
+  background: linear-gradient(90deg, #48C6EF 0%, #6F86D6 100%), #d9d9d956;
+  background-size: var(--pseudo-background-size);
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
+.roundRange::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  margin-top: -8px;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+}
+
+.topRange {
+  width: 210px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+.topRange,
+.topRange::-webkit-slider-runnable-track,
+.topRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+.topRange::-webkit-slider-runnable-track {
+  width: 200px;
+  height: 4px;
+  background: linear-gradient(90deg, #48C6EF 0%, #6F86D6 100%), #d9d9d956;
+  background-size: var(--pseudo-background-sizeTop);
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
+.topRange::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  margin-top: -8px;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+}

@@ -1,0 +1,59 @@
+{
+    "name": "Pinterest Nuar | Dark Theme",
+    "description": "Pinterest | Material design",
+    "version": "0.1.2",
+    "manifest_version": 3,
+    "icons": {
+        "16": "darkLogo.png",
+        "128": "darkLogo.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_icon": "darkLogo.png",
+        "default_title": "Tap to open settings menu",
+        "default_popup": "popup.html"
+    },
+        
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting",
+        "tabs"
+    ],
+    
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.pinterest.ru/*",
+                "https://www.pinterest.com/*",
+                "https://www.pinterest.co.uk/*",
+                "https://www.pinterest.us/*",
+                "https://www.pinterest.ua/*",
+                "https://www.pinterest.tw/*",
+                "https://www.pinterest.tr/*",
+                "https://www.pinterest.su/*",
+                "https://www.pinterest.si/*",
+                "https://www.pinterest.se/*",
+                "https://www.pinterest.sa/*",
+                "https://www.pinterest.pk/*",
+                "https://www.pinterest.mg/*",
+                "https://www.pinterest.lv/*",
+                "https://www.pinterest.kp/*",
+                "https://www.pinterest.fr/*",
+                "https://www.pinterest.fi/*",
+                "https://www.pinterest.de/*",
+                "https://www.pinterest.cz/*",
+                "https://www.pinterest.ch/*",
+                "https://www.pinterest.cn/*",
+                "https://www.pinterest.by/*",
+                "https://www.pinterest.br/*",
+                "https://www.pinterest.aq/*",
+                "https://*.pinterest.com/*"
+            ], 
+            "run_at": "document_start",
+            "js": ["pint.js"]
+        }
+    ]
+}
