@@ -9,5 +9,5 @@
 
 - The User can change: 
     1. Rounding of images
-    1. Corners indentation
+    2. Corners indentation
 
