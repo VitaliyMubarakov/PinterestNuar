@@ -1,5 +1,5 @@
 # Pinterest Nuar
-![Main](https://media.giphy.com/media/wKoPDy4mp8Lr6IJ9ce/giphy.gif)
+![Main](./img/VERY_BIG.png)
 ### Customizable dark theme for pinterest.com
 
 ## Features
