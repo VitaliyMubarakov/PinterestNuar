@@ -128,8 +128,6 @@ function useCSS() {
         darkPint = document.getElementById("darkPint");
         darkPint.appendChild(darkPintStyle);
 
-        console.log("da пошло")
-
     
 
 }
