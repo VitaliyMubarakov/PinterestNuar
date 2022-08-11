@@ -1,7 +1,7 @@
 {
     "name": "Pinterest Nuar | Dark Theme",
     "description": "Pinterest | Material design",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "manifest_version": 3,
     "icons": {
         "16": "img/darkLogo.png",
@@ -19,8 +19,7 @@
     "permissions": [
         "storage",
         "activeTab",
-        "scripting",
-        "tabs"
+        "scripting"
     ],
     
     "content_scripts": [
