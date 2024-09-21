@@ -1,7 +1,8 @@
+setCurrentStatus($('.switch-btn'));
+chrome.action.onClicked.addListener((tab) => { console.log("AHAHA") });
 document.addEventListener('DOMContentLoaded', function () {
     //tumbler()     
     console.log("pop")
-    setCurrentStatus($('.switch-btn'));
     let turn = document.getElementById("turn");
 
     let roundRange = document.getElementsByClassName("roundRange")[0];
@@ -90,11 +91,11 @@ function Wrapper(key, value) {
     function TurnExtension() {
         chrome.storage.sync.get('isTurn', function (data) {
             turn = data.isTurn;
-            console.log(turn);
+            console.log("ahaakkakakak: " + turn);
             let darkPint = document.getElementById("darkPint");
             let darkPintStyle = document.getElementById("darkPintStyle");
 
-            if (turn == null || turn == undefined) chrome.storage.sync.set({ isTurn: true });
+            if (!turn) chrome.storage.sync.set({ isTurn: false });
 
             if (turn == false) {
                 if (darkPint) useCSS();
@@ -134,7 +135,7 @@ function setCurrentStatus(buttonTurn) {
         chrome.storage.sync.get('isTurn', function (data) {
             turn = data.isTurn;
 
-            if (turn == null || turn == undefined) chrome.storage.sync.set({ isTurn: true });
+            if (!turn) turn = false;
 
             if (turn == true) {
                 buttonTurn.addClass('switch-on');
@@ -152,7 +153,7 @@ function setCurrentStatus(buttonTurn) {
 
         chrome.storage.sync.get('round', function (data) {
             let round = data.round;
-
+            if (!round) round = 8;
             let roundRange = document.getElementsByClassName("roundRange")[0];
 
             let style = document.querySelector('.punktText.roundingText').style;
@@ -168,6 +169,7 @@ function setCurrentStatus(buttonTurn) {
 
         chrome.storage.sync.get('top', function (data) {
             let top = data.top;
+            if (!top) top = 8;
 
             let topRange = document.getElementsByClassName("topRange")[0];
 

@@ -57,7 +57,7 @@ InitStyles(
             color: rgb(180, 180, 180) !important;
         }`),
     new CssStyle("", `
-        .lH1.dyH.iFc.H2s.R-d.O2T.zDA.IZT {
+        .lH1.dyH.iFc.H2s.R-d.O2T.zDA.IZT { 
             color: rgb(180, 180, 180) !important;
         }`),
     new CssStyle("", `
@@ -100,10 +100,26 @@ InitStyles(
     new CssStyle("", `
         .lH1.dyH.iFc.H2s.bwj.O2T.zDA.IZT.CKL {
             color: white;
+        }`),
+    new CssStyle("Имена авторов", `
+        .hs0.ujU.un8.C9i.TB_ > .zI7.iyn.Hsu:first-child > :first-child[data-test-id="pinrep-footer"] {
+            display: none;
+        }`),
+    new CssStyle("Logo", `
+        .g_1.gUZ.U9O.kVc {
+            color: #b4b4b4;
+        }`),
+    new CssStyle("Меню поиска", `
+        [data-test-id="typeaheadResults"] {
+            background-color: #272727 !important;
+        }`),
+    new CssStyle("названия сейвов", `
+        .lH1.dyH.iFc.H2s.bwj.X8m.zDA.IZT.CKL {
+            color: #ffffff !important;
         }`)
 );
 
-chrome.storage.sync.set({ isTurn: true });
+//chrome.storage.sync.set({ isTurn: true });
 var firstTimeStylesStringData;
 
 function InitStyles(...styles) {
@@ -122,36 +138,38 @@ darkPint = document.createElement("div");
 darkPint.id = "darkPint";
 body.appendChild(darkPint);
 
-chrome.storage.sync.get('isTurn', function (data) {
-    console.log("asd")
-    turn = data.isTurn;
-
-    if (turn == null || turn == undefined) {
-        chrome.storage.sync.set({ isTurn: true });
-        console.log("AHAAHAHAHLOH");
-    }
-
-    if (turn == true) useCSS();
-
-    if (turn == false) {
-        let darkPint = document.getElementById("darkPint");
-        if (!darkPint) {
-            console.log("негра нет")
-            darkPint.innerHTML = "";
-        }
-        // var theFirstChild = body.firstChild;
-
-
-    }
-    useCSSStyles();
-    console.log(turn);
-});
+SetStartValues();
 
 // document.addEventListener("DOMContentLoaded", () => {
 //     useCSS();
 // });
 
+function SetStartValues() {
+    chrome.storage.sync.get('isTurn', function (data) {
+        turn = data.isTurn;
 
+        if (!turn) chrome.storage.sync.set({ isTurn: false });
+        
+        if (turn == true) useCSS();
+
+        if (turn == false) {
+            let darkPint = document.getElementById("darkPint");
+            if (!darkPint) {
+                darkPint.innerHTML = "";
+            }
+            // var theFirstChild = body.firstChild;
+        }
+        useCSSStyles();
+    });
+
+    chrome.storage.sync.get('round', function (data) {
+        if (!data.round) chrome.storage.sync.set({ round: 8 });
+    });
+
+    chrome.storage.sync.get('top', function (data) {
+        if (!data.top) chrome.storage.sync.set({ top: 8 });
+    });
+}
 
 function useCSS() {
     let body = document.getElementsByTagName("html")[0];
