@@ -1,9 +1,127 @@
 console.log("da")
+
+let darkPintStyle;
+class CssStyle {
+    desc = "";
+    style = "";
+    constructor(desc, style) {
+        this.desc = desc;
+        this.style = style;
+    }
+}
+
+InitStyles(
+    new CssStyle("", `
+        body {
+            background-color: #121212 !important;
+        }`),
+    new CssStyle("", `
+        .appContent > :nth-child(1) {
+            background-color: #121212 !important;
+        }`),
+    new CssStyle("", `
+        .gUZ.sj_.U9O.kVc > :nth-child(1) {
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(342deg) brightness(102%) contrast(102%) !important;
+        }`),
+    new CssStyle("", `
+        .Eqh.P_h.fZz.fev.zI7.iyn.Hsu {
+            background-color: #1f1f1f24 !important;
+        }`),
+    new CssStyle("", `
+        .tBJ.dyH.iFc.sAJ.O2T.tg7.H2s {
+            color: #ffffff81;
+        }`),
+    new CssStyle("Поиск", `
+        .Jea.fev.zI7.iyn.Hsu {
+            background-color: #ff1e1e00 !important;
+        }`),
+    new CssStyle("Поиск наведение", `
+        .Jea.fev.zI7.iyn.Hsu:hover {
+            background-color: #ff1e1e00 !important;
+        }`),
+    new CssStyle("", `
+        #justSearch {
+            background-color: #e0858500 !important;
+            z-index: -400;
+        }`),
+    new CssStyle("", `
+        .C9q.Jea.fZz.gjz.ujU.xcv.L4E.zI7.iyn.Hsu {
+            background-color: #1f1f1f !important;
+        }`),
+    new CssStyle("", `
+        .zI7.iyn.Hsu {
+            background-color: #ff1e1e00 !important;
+        }`),
+    new CssStyle("", `
+        .tBJ.dyH.iFc {
+            color: rgb(180, 180, 180) !important;
+        }`),
+    new CssStyle("", `
+        .lH1.dyH.iFc.H2s.R-d.O2T.zDA.IZT {
+            color: rgb(180, 180, 180) !important;
+        }`),
+    new CssStyle("", `
+        .Yl-.MIw.Hb7 > div {
+            /* padding: 15px !important; */
+        }`),
+    new CssStyle("", `
+        .jzS.un8.TB_ {
+            background-color: #1f1f1f !important;
+        }`),
+    new CssStyle("", `
+        .VxL.XiG.ho-.urM.wc1.zI7.iyn.Hsu {
+            background-color: #1f1f1f !important;
+        }`),
+    new CssStyle("", `
+        .R19 {
+            color: #d2d2d2 !important;
+        }`),
+    new CssStyle("", `
+        .MIw.QLY.Rym.ojN.p6V.sLG.zI7.iyn.Hsu {
+            border-color: transparent !important;
+        }`),
+    new CssStyle("", `
+        .RCK.Hsu.USg.adn.CCY.NTm.KhY.czT.F10.xD4.fZz.hUC.a_A.gpV.hNT.BG7.hDj._O1.gjz.mQ8.FTD.L4E {
+            background-color: transparent !important;
+        }`),
+    new CssStyle("", `
+        .lH1.dyH.iFc.H2s.R-d.O2T.tg7.IZT {
+            color: white !important;
+        }`),
+    new CssStyle("", `
+        .u97 {
+            background-color: rgb(255 255 255 / 0%) !important;
+            background-color: rgb(31 31 31) !important;
+        }`),
+    new CssStyle("", `
+        .Wk9.xQ4.CCY.czT.INd.kVc.FTD.L4E.DI9.BG7 {
+            background-color: #1f1f1f !important;
+        }`),
+    new CssStyle("", `
+        .lH1.dyH.iFc.H2s.bwj.O2T.zDA.IZT.CKL {
+            color: white;
+        }`)
+);
+
+chrome.storage.sync.set({ isTurn: true });
+var firstTimeStylesStringData;
+
+function InitStyles(...styles) {
+    let data = "";
+    for (let i = 0; i < styles.length; i++) {
+        data += styles[i].style;
+    }
+
+    firstTimeStylesStringData = { stylesStringData: data };
+    chrome.storage.local.set({ stylesStringData: data });
+}
+
+
 let body = document.getElementsByTagName("html")[0];
 darkPint = document.createElement("div");
 darkPint.id = "darkPint";
 body.appendChild(darkPint);
-    
+
 chrome.storage.sync.get('isTurn', function (data) {
     console.log("asd")
     turn = data.isTurn;
@@ -11,7 +129,7 @@ chrome.storage.sync.get('isTurn', function (data) {
     if (turn == null || turn == undefined) {
         chrome.storage.sync.set({ isTurn: true });
         console.log("AHAAHAHAHLOH");
-    } 
+    }
 
     if (turn == true) useCSS();
 
@@ -20,15 +138,15 @@ chrome.storage.sync.get('isTurn', function (data) {
         if (!darkPint) {
             console.log("негра нет")
             darkPint.innerHTML = "";
-        } 
+        }
         // var theFirstChild = body.firstChild;
-        
 
-    } 
+
+    }
     useCSSStyles();
     console.log(turn);
 });
-    
+
 // document.addEventListener("DOMContentLoaded", () => {
 //     useCSS();
 // });
@@ -36,100 +154,15 @@ chrome.storage.sync.get('isTurn', function (data) {
 
 
 function useCSS() {
-        let body = document.getElementsByTagName("html")[0];
-        if (!body) console.log("body нет")
-        // var theFirstChild = body.firstChild;
-        
-        darkPintStyle = document.createElement("style");
-        darkPintStyle.innerHTML = `body {
-            background-color: #121212 !important;
-        }
-
-        .appContent > :nth-child(1) {
-            background-color: #121212 !important;
-        }
-        .gUZ.sj_.U9O.kVc > :nth-child(1) {
-            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(342deg) brightness(102%) contrast(102%);
-        }
-
-        /* Это кнопка выбора пункта */
-        .Eqh.P_h.fZz.fev.zI7.iyn.Hsu { 
-            background-color: #1f1f1f24;
-        }
-        /* Это кнопка не выбранного пункта */
-        .tBJ.dyH.iFc.sAJ.O2T.tg7.H2s { 
-            color: #ffffff81;
-        }
-        /* поиск */
-        .Jea.fev.gpV.zI7.iyn.Hsu { 
-            background-color: #ff1e1e00;
-        }
-        .Jea.fev.gpV.zI7.iyn.Hsu:hover { 
-            background-color: #ff1e1e00;
-        }
-
-        #justSearch { 
-            background-color: #e0858500;
-            z-index: -400;
-        }
-
-        .C9q.Jea.fZz.gjz.ujU.xcv.L4E.zI7.iyn.Hsu {
-            background-color: #1f1f1f;
-        }
-
-        .zI7.iyn.Hsu{ 
-            background-color: #ff1e1e00;
-        }
-        .tBJ.dyH.iFc {
-            color: rgb(180, 180, 180);
-        }
-        .lH1.dyH.iFc.H2s.R-d.O2T.zDA.IZT {
-            color: rgb(180, 180, 180);
-        }
-
-        .Yl-.MIw.Hb7 > div {
-            /* padding: 15px !important; */
-        }
-
-        .jzS.un8.TB_ {
-            background-color: #1f1f1f;
-        }
-        .VxL.XiG.ho-.urM.wc1.zI7.iyn.Hsu {
-            background-color:#1f1f1f
-        }
-
-        .R19{
-            color: #d2d2d2 !important;
-        } 
-
-        .MIw.QLY.Rym.ojN.p6V.sLG.zI7.iyn.Hsu {
-            border-color: transparent !important;
-        }
-        .RCK.Hsu.USg.adn.CCY.NTm.KhY.czT.F10.xD4.fZz.hUC.a_A.gpV.hNT.BG7.hDj._O1.gjz.mQ8.FTD.L4E {
-            background-color: transparent !important;
-        }
-
-        .lH1.dyH.iFc.H2s.R-d.O2T.tg7.IZT {
-            color: white !important;
-        }
-        .u97 {
-            background-color: rgb(255 255 255 / 0%) !important;
-            background-color: rgb(31 31 31) !important;
-        }
-        .Wk9.xQ4.CCY.czT.INd.kVc.FTD.L4E.DI9.BG7 {
-            background-color: #1f1f1f !important;
-        } 
-        .lH1.dyH.iFc.H2s.bwj.O2T.zDA.IZT.CKL {
-            color: white;
-        }
-            `;
-            
-        darkPintStyle.id = "darkPintStyle";
-        darkPint = document.getElementById("darkPint");
-        darkPint.appendChild(darkPintStyle);
-
-    
-
+    let body = document.getElementsByTagName("html")[0];
+    if (!body) console.log("body нет")
+    // var theFirstChild = body.firstChild;
+    console.log("body нет")
+    darkPintStyle = document.createElement("style");
+    darkPintStyle.innerHTML = firstTimeStylesStringData.stylesStringData;
+    darkPintStyle.id = "darkPintStyle";
+    darkPint = document.getElementById("darkPint");
+    darkPint.appendChild(darkPintStyle);
 }
 
 function useCSSStyles() {
@@ -152,13 +185,13 @@ function useCSSStyles() {
 
             darkPintStyleRound.id = "darkPintStyleRound";
             darkPintStyleTop.id = "darkPintStyleTop";
-            
+
             darkPint = document.getElementById("darkPint");
 
             darkPint.appendChild(darkPintStyleRound);
             darkPint.appendChild(darkPintStyleTop);
         });
-        
+
     });
 
 }
