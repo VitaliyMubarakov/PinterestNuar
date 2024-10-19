@@ -1,6 +1,36 @@
-console.log("da")
+console.log("Extension Start")
+
+Observe(); //фиксим загрузку
 
 let darkPintStyle;
+
+// Это фикс новой загрузки на Pinterest
+function Observe() {
+    function mutationCallback(mutationsList, observer) {
+        mutationsList.forEach(mutation => {
+            if (!document.getElementById('darkPint')) {
+                AddStyles();
+            }
+        });
+    }
+
+    // Создаем новый MutationObserver
+    const observer = new MutationObserver(mutationCallback);
+
+    // Настройки для наблюдения: отслеживаем изменения в дочерних элементах, атрибутах, текстовом содержимом
+    const config = {
+        childList: true,     // Отслеживаем добавление и удаление дочерних элементов
+        attributes: true,    // Отслеживаем изменение атрибутов
+        subtree: true,       // Отслеживаем изменения в потомках, а не только в корневом элементе
+        characterData: false  // Отслеживаем изменения в текстовом содержимом
+    };
+
+    // Начинаем наблюдение за элементом <html>
+    const htmlElement = document.documentElement;
+    observer.observe(htmlElement, config);
+}
+
+
 class CssStyle {
     desc = "";
     style = "";
@@ -119,7 +149,6 @@ InitStyles(
         }`)
 );
 
-//chrome.storage.sync.set({ isTurn: true });
 var firstTimeStylesStringData;
 
 function InitStyles(...styles) {
@@ -132,24 +161,20 @@ function InitStyles(...styles) {
     chrome.storage.local.set({ stylesStringData: data });
 }
 
+function AddStyles() {
+    let body = document.getElementsByTagName("html")[0];
+    darkPint = document.createElement("div");
+    darkPint.id = "darkPint";
+    body.appendChild(darkPint);
 
-let body = document.getElementsByTagName("html")[0];
-darkPint = document.createElement("div");
-darkPint.id = "darkPint";
-body.appendChild(darkPint);
-
-SetStartValues();
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     useCSS();
-// });
+    SetStartValues();
+}
 
 function SetStartValues() {
     chrome.storage.sync.get('isTurn', function (data) {
         turn = data.isTurn;
-
         if (!turn) chrome.storage.sync.set({ isTurn: false });
-        
+
         if (turn == true) useCSS();
 
         if (turn == false) {
@@ -172,10 +197,6 @@ function SetStartValues() {
 }
 
 function useCSS() {
-    let body = document.getElementsByTagName("html")[0];
-    if (!body) console.log("body нет")
-    // var theFirstChild = body.firstChild;
-    console.log("body нет")
     darkPintStyle = document.createElement("style");
     darkPintStyle.innerHTML = firstTimeStylesStringData.stylesStringData;
     darkPintStyle.id = "darkPintStyle";
